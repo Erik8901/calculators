@@ -1,0 +1,92 @@
+body {
+   background-color: white;
+}
+
+#base {
+    background-color: green;
+    width: 300px;
+    height: 100px;
+}
+
+#count {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    width: 1300px;
+    height: 600px;
+    margin-top: 60px;
+    margin-left: 300px;
+    border-radius: 30px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+    opacity: 0.9
+}
+
+#numberOne {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: firebrick;
+    width: 200px;
+    margin-left: 360px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+    text-align: center;
+}
+
+#numberTwo {
+    display: inline-block;
+    background-color: firebrick;
+    width: 200px;
+    margin-left: 100px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+    text-align: center;
+}
+
+#multi {
+    display: block;
+    background-color: orange;
+    width: 100px;
+    height: 60px;
+    margin-top: 40px;
+    margin-left: 470px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+}
+
+#end{
+    background-color: blue;
+    text-align: center;
+    width: 200px;
+    height: 100px;
+    margin-left: 540px;
+    margin-top: 40px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: white;
+    border-width: 4px;
+}
+
+
+
+#res {
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    width: 200px;
+    height: 100px;
+    margin-left: 540px;
+    margin-top: 40px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: dimgrey;
+    border-width: 4px;
+}

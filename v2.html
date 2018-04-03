@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 4 Vue</title>
+    <link rel="stylesheet" type="text/css" href="./styles/stylesVue.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+      
+    window.addEventListener("load", () => {
+        
+        let vm = new Vue ({
+            el:"#base",
+            data: {
+                test: "It Works!"
+            },
+            methods: {
+                myClick: function(event) {
+                    this.test = "It did work, good!"
+                }
+            }
+        })
+    
+   
+    let vmCount = new Vue ({
+        el: "#count",
+        data: {
+            currentNumber: this.currentNumber,
+            lastNumber: this.lastNumber,
+            total: this.total,
+            result: this.result,
+            end: ' ',
+            history: ' '
+        },
+        methods: { 
+            addNumbers: function(eventAdd) {
+                this.lastNumber = this.currentNumber
+                //+this.total + +this.currentNumber  
+                },
+            minusNumbers: function(eventMinus) {
+                this.lastNumber = this.currentNumber
+                this.total = +this.lastNumber - +this.currentNumber
+            },
+            timesNumbers: function(eventTimes) {
+                this.lastNumber = this.currentNumber
+                this.total = +this.lastNumber * +this.currentNumber
+            },
+            devideNumbers: function(eventDevide) {
+                this.lastNumber = this.currentNumber
+                this.total = +this.lastNumber + +this.currentNumber
+                //this.result = +this.lastNumber / +this.currentNumber
+            },
+            equal: function(eventEqual) {
+                this.total = +this.lastNumber + +this.currentNumber 
+                //this.end = +this.total + +this.currentNumber
+            }
+        }
+        
+        
+    
+       
+        
+        
+        
+    })//vue
+       /*var lastNumber = this.result 
+         console.log(lastNumber)*/
+      
+        
+}); //load
+        
+      
+    
+          
+    
+    
+    
+    
+</script>
+</head>
+<body>
+    
+    
+</body>
+    <div id="base">1234
+        <p> {{ test }} </p>
+        <button @click="myClick">click to test</button>
+    </div>
+    
+    <div id="count">
+        
+        <div id="numberOne">
+        Enter First Number: 
+            <input v-model="currentNumber" id="One" type="number" placeholder="enter number">
+            <p>Current number is: {{ currentNumber }}</p>
+            <p>last number is: {{ lastNumber }}</p>
+            <p>total is: {{ total }}</p>
+            <p>result is: {{ result }}</p>
+        </div>
+       <!-- 
+        <div id="numberTwo">
+        Enter Second Number: 
+        <input v-model="second" id="Two" type="number" placeholder="enter number"><p>Number is: {{ second }}</p>
+        </div>
+        -->
+        <button id="add" @click="addNumbers">+</button>
+        <button id="minus" @click="minusNumbers">-</button>
+        <button id="times" @click="timesNumbers">*</button>
+        <button id="devide" @click="devideNumbers">/</button>
+        <button id="equal" @click="equal">=</button>
+        
+        
+        
+        <div id="history">
+            <ol>Numbers:</ol>
+            <li> {{ history }}</li></div>
+        
+        
+        
+        <div id="end">
+            <p>{{ end}}</p>
+        </div>
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    
+
+    
+    </script>
+</html>

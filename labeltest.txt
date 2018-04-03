@@ -1,0 +1,5 @@
+ <label for="first"></label>
+            <input type="text" id="One" v-model="first">
+            <label for="second"></label>
+            <input type="text" id="Two" v-model="second">
+            <button @click="addNumbers">Submit</button>

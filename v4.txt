@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 4 Vue</title>
+    <link rel="stylesheet" type="text/css" href="./styles/stylesVue.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+      
+    window.addEventListener("load", () => {
+        
+        let vm = new Vue ({
+            el:"#base",
+            data: {
+                test: "It Works!"
+            },
+            methods: {
+                myClick: function(event) {
+                    this.test = "It did work, good!"
+                }
+            }
+        })
+    
+   
+    let vmCount = new Vue ({
+        el: "#count",
+        data: {
+            currentNumber: ' ',
+            lastNumber: ' ',
+            total: ' ',
+            result: " ",
+            history: ' '
+        },
+        methods: { 
+            adDNumbers: function(event1) {
+                let x = this.currentNumber
+                this.lastNumber = x
+            },
+            equal: function(event2) {
+                this.result = +this.currentNumber + +this.lastNumber
+            }
+            
+        
+        }
+        
+       
+        
+        
+        
+    })//vue
+       /*var lastNumber = this.result 
+         console.log(lastNumber)*/
+      
+        
+}); //load
+        
+      
+    
+          
+    
+    
+    
+    
+</script>
+</head>
+<body>
+    
+    
+</body>
+    <div id="base">1234
+        <p> {{ test }} </p>
+        <button @click="myClick">click to test</button>
+    </div>
+    
+    <div id="count">
+        
+        <div id="numberOne">
+        Enter First Number: 
+            <input v-model="currentNumber" id="One" type="number" placeholder="enter number">
+            <p>Current number is: {{ currentNumber }}</p>
+            <p>last number is: {{ lastNumber }}</p>
+            <p>total is: {{ total }}</p>
+        </div>
+       <!-- 
+        <div id="numberTwo">
+        Enter Second Number: 
+        <input v-model="second" id="Two" type="number" placeholder="enter number"><p>Number is: {{ second }}</p>
+        </div>
+        -->
+        <button id="add" @click="adDNumbers">+</button>
+        
+        <button id="equal" @click="equal">=</button>
+        
+        
+        <div id="history">
+            <ol>Numbers:</ol>
+            <li> {{ history }}</li></div>
+        
+        <div id="sum">
+            <p>{{ result }}</p>
+        </div>
+        
+        
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    
+
+    
+    </script>
+</html>
