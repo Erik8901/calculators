@@ -35,7 +35,7 @@
         methods: { 
             addNumbers: function(eventAdd) {
                 this.lastNumber = this.currentNumber
-                //+this.total + +this.currentNumber  
+                this.result = +this.total + +this.currentNumber  
                 },
             minusNumbers: function(eventMinus) {
                 this.lastNumber = this.currentNumber
@@ -52,6 +52,8 @@
             },
             equal: function(eventEqual) {
                 this.total = +this.lastNumber + +this.currentNumber 
+                
+                
                 
                 
             }
