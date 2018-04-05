@@ -1,5 +1,5 @@
 body {
-   background-color: white;
+   background-color: green;
 }
 
 #base {
@@ -9,11 +9,11 @@ body {
 }
 
 #One {
-    background-color: gray;
+    background-color: white;
     width: 200px;
     height: 60px;
     text-align: center;
-    color: white;
+    color: black;
 }
 #count {
     display: inline-block;

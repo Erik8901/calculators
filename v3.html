@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 4 Vue V3</title>
+    <link rel="stylesheet" type="text/css" href="./styles/styles3.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+      
+    window.addEventListener("load", () => {
+        
+    let vmCount = new Vue ({
+        el: "#start",
+        data: {
+            currentNumber: ' '
+            
+        },
+        methods: {
+            showNumber: function(event) {
+                this.currentNumber = this.currentNumber + "" + parseFloat(event.target.innerHTML);
+            },
+            resetIt: function(event) {
+            this.currentNumber = ' '
+            }
+        }
+    })//vue
+      
+}); //load
+        
+      
+    
+          
+    
+    
+    
+    
+</script>
+</head>
+<body>
+    
+    
+   <div class="container">
+    <div id="start">
+        <!--<input v-model="numbersDisplay" id="numbers" type="text" placeholder="0">-->
+        <input placeholder=0 class="screen" v-model="currentNumber">
+        </input>
+            <table>
+                <tr>
+                    <td><button value="C" @click="resetIt">C</button></td>
+                    <td><button v-on:click="showNumber">0</button></td>
+                    <!--<td><button v-on:click="equal">=</button></td>-->
+                    <!--<td><button v-on:click="sum">+</button></td>-->
+                </tr>
+                <tr>
+                    <td><button v-on:click="showNumber">1</button></td>
+                    <td><button v-on:click="showNumber">2</button></td>
+                    <td><button v-on:click="showNumber">3</button></td>
+                    <!--<td><button v-on:click="minus">-</button></td>-->
+                </tr>
+                <tr>
+                    <td><button v-on:click="showNumber">4</button></td>
+                    <td><button v-on:click="showNumber">5</button></td>
+                    <td><button v-on:click="showNumber">6</button></td>
+                    <!--<td><button v-on:click="times">*</button></td>-->
+                </tr>
+                <tr>
+                    <td><button v-on:click="showNumber">7</button></td>
+                    <td><button v-on:click="showNumber">8</button></td>
+                    <td><button v-on:click="showNumber">9</button></td>
+                    <!--<td><button v-on:click="devide">/</button></td>-->
+                </tr>
+        </table>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       </div>
+</div>
+        
+     
+</body>
+   
+      
+        
+   
+        
+        
+      
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    
+
+    
+    </script>
+</html>

@@ -25,7 +25,7 @@
     let vmCount = new Vue ({
         el: "#count",
         data: {
-            currentNumber: ' ',
+            currentNumber: this.currentNumber,
             lastNumber: this.lastNumber,
             total: this.total,
             result: this.result,
@@ -34,10 +34,13 @@
             op: ' '
         },
         methods: {
-        addNumbers: function(eventAdd) {
-                this.lastNumber = this.currentNumber
+            reset: function(resetIt) {
                 this.currentNumber = ' '
-                this.op = "+"
+            },
+            addNumbers: function(eventAdd) {
+                 this.lastNumber = this.currentNumber
+                 this.op = "+"
+                
                },
             minusNumbers: function(eventMinus) {
                 this.lastNumber = this.currentNumber
@@ -53,10 +56,7 @@
                 //this.result = +this.lastNumber / +this.currentNumber
             },
             equal: function(eventEqual) {
-                //this.total = +this.lastNumber + +this.currentNumber 
-            },
-            reset: function(resetIt) {
-                this.currentNumber = ' '
+                this.total = parseFloat(this.lastNumber) + parseFloat(this.currentNumber) 
             }
         }
     })//vue
@@ -85,8 +85,8 @@
     <div id="count">
         
         <div id="numberOne">
-            <p id="tot">{{ lastNumber}} {{ op }} {{ currentNumber }}</p>
-            <input v-model="currentNumber" id="One" type="text" placeholder=0 >
+            <!--<p id="tot">{{ lastNumber}} {{ op }} {{ currentNumber}}</p>-->
+            <input v-model="currentNumber" id="One" type="text"          placeholder="0">
            <p>Current number is: {{ currentNumber }}
             <p>last number is: {{ lastNumber }}
             <p>total is: {{ total }}</p>
