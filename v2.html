@@ -52,10 +52,9 @@
             },
             equal: function(eventEqual) {
                 this.total = +this.lastNumber + +this.currentNumber 
-                
-                
-                
-                
+            },
+            reset: function(resetIt) {
+                this.currentNumber = ' '
             }
         }
         
@@ -93,25 +92,23 @@
     <div id="count">
         
         <div id="numberOne">
-        Enter First Number: 
-            <input v-model="currentNumber" id="One" type="number" placeholder="enter number">
+        Enter Number: 
+            <input v-model="currentNumber" id="One" type="number" placeholder=0>
             <p>Current number is: {{ currentNumber }}</p>
             <p>last number is: {{ lastNumber }}</p>
             <p>total is: {{ total }}</p>
             <p>result is: {{ result }}</p>
         </div>
-       <!-- 
-        <div id="numberTwo">
-        Enter Second Number: 
-        <input v-model="second" id="Two" type="number" placeholder="enter number"><p>Number is: {{ second }}</p>
-        </div>
-        -->
+      
+        
+    <div id="knappar">
+        <button id="add" @click="reset">C</button>
         <button id="add" @click="addNumbers">+</button>
         <button id="minus" @click="minusNumbers">-</button>
         <button id="times" @click="timesNumbers">*</button>
         <button id="devide" @click="devideNumbers">/</button>
         <button id="equal" @click="equal">=</button>
-        
+     </div>   
         
         
         <div id="history">
