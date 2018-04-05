@@ -25,50 +25,43 @@
     let vmCount = new Vue ({
         el: "#count",
         data: {
-            currentNumber: this.currentNumber,
+            currentNumber: ' ',
             lastNumber: this.lastNumber,
             total: this.total,
             result: this.result,
             end: ' ',
-            history: ' '
+            history: ' ',
+            op: ' '
         },
-        methods: { 
-            addNumbers: function(eventAdd) {
+        methods: {
+        addNumbers: function(eventAdd) {
                 this.lastNumber = this.currentNumber
-                this.result = +this.total + +this.currentNumber  
-                },
+                this.currentNumber = ' '
+                this.op = "+"
+               },
             minusNumbers: function(eventMinus) {
                 this.lastNumber = this.currentNumber
-                this.total = +this.lastNumber - +this.currentNumber
+                
             },
             timesNumbers: function(eventTimes) {
                 this.lastNumber = this.currentNumber
-                this.total = +this.lastNumber * +this.currentNumber
+                
             },
             devideNumbers: function(eventDevide) {
                 this.lastNumber = this.currentNumber
-                this.total = +this.lastNumber + +this.currentNumber
+                
                 //this.result = +this.lastNumber / +this.currentNumber
             },
             equal: function(eventEqual) {
-                this.total = +this.lastNumber + +this.currentNumber 
+                //this.total = +this.lastNumber + +this.currentNumber 
             },
             reset: function(resetIt) {
                 this.currentNumber = ' '
             }
         }
-        
-        
-    
-       
-        
-        
-        
     })//vue
        /*var lastNumber = this.result 
          console.log(lastNumber)*/
-      
-        
 }); //load
         
       
@@ -92,10 +85,10 @@
     <div id="count">
         
         <div id="numberOne">
-        Enter Number: 
-            <input v-model="currentNumber" id="One" type="number" placeholder=0>
-            <p>Current number is: {{ currentNumber }}</p>
-            <p>last number is: {{ lastNumber }}</p>
+            <p id="tot">{{ lastNumber}} {{ op }} {{ currentNumber }}</p>
+            <input v-model="currentNumber" id="One" type="text" placeholder=0 >
+           <p>Current number is: {{ currentNumber }}
+            <p>last number is: {{ lastNumber }}
             <p>total is: {{ total }}</p>
             <p>result is: {{ result }}</p>
         </div>
