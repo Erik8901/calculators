@@ -13,7 +13,8 @@
         el: "#start",
         data: {
             currentNumber: ' ',
-            numbers: []
+            lastNumber: [],
+            total: []
             
         },
         methods: {
@@ -21,13 +22,21 @@
                 this.currentNumber = this.currentNumber + "" + parseFloat(event.target.innerHTML);
             },
             resetIt: function(event) {
-            
             this.currentNumber = ' '
-            this.numbers = []
+            this.lastNumber = ''
+            this.total = []
             },
             sum: function(event) {
-                this.numbers =  parseFloat(this.currentNumber)
-                console.log(this.numbers)
+                this.lastNumber= parseFloat(this.currentNumber);
+                this.currentNumber = ' '
+                
+            },
+            minus: function(event) {
+                this.lastNumber= parseFloat(this.currentNumber);
+                this.currentNumber = ' '
+            },
+            equal: function(event) {
+                this.total = parseFloat(this.lastNumber) + parseFloat(this.currentNumber) 
             }
         }
     })//vue
@@ -51,19 +60,20 @@
         <!--<input v-model="numbersDisplay" id="numbers" type="text" placeholder="0">-->
         <input placeholder=0 class="screen" v-model="currentNumber">
         </input>
-       <input class="list" v-model="numbers"></input>
+       <input placeholder="lastnumber" class="list" v-model="lastNumber"></input>
+        <input placeholder="total" class="list1" v-model="total"></input>
             <table>
                 <tr>
                     <td><button value="C" @click="resetIt">C</button></td>
                     <td><button v-on:click="showNumber">0</button></td>
-                    <!--<td><button v-on:click="equal">=</button></td>-->
-                    <td><button v-on:click="sum">+</button></td>
+                    <td><button v-on:click="equal">=</button></td>
+                    <td><button v-on:click="sum()">+</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">1</button></td>
                     <td><button v-on:click="showNumber">2</button></td>
                     <td><button v-on:click="showNumber">3</button></td>
-                    <!--<td><button v-on:click="minus">-</button></td>-->
+                    <td><button v-on:click="minus">-</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">4</button></td>
