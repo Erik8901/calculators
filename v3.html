@@ -21,11 +21,11 @@
                 this.currentNumber = this.currentNumber + "" + parseFloat(event.target.innerHTML);
             },
             resetIt: function(event) {
+            
             this.currentNumber = ' '
             this.numbers = []
             },
             sum: function(event) {
-                
                 this.numbers =  parseFloat(this.currentNumber)
                 console.log(this.numbers)
             }
