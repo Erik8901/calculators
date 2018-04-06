@@ -12,7 +12,8 @@
     let vmCount = new Vue ({
         el: "#start",
         data: {
-            currentNumber: ' '
+            currentNumber: ' ',
+            numbers: []
             
         },
         methods: {
@@ -21,6 +22,11 @@
             },
             resetIt: function(event) {
             this.currentNumber = ' '
+            },
+            sum: function(event) {
+                
+                this.numbers.push(this.currentNumber)
+                console.log(this.numbers)
             }
         }
     })//vue
@@ -44,12 +50,13 @@
         <!--<input v-model="numbersDisplay" id="numbers" type="text" placeholder="0">-->
         <input placeholder=0 class="screen" v-model="currentNumber">
         </input>
+       <input class="list" v-model="numbers"></input>
             <table>
                 <tr>
                     <td><button value="C" @click="resetIt">C</button></td>
                     <td><button v-on:click="showNumber">0</button></td>
                     <!--<td><button v-on:click="equal">=</button></td>-->
-                    <!--<td><button v-on:click="sum">+</button></td>-->
+                    <td><button v-on:click="sum">+</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">1</button></td>
