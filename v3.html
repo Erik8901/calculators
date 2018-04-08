@@ -14,7 +14,8 @@
         data: {
             currentNumber: ' ',
             lastNumber: [],
-            total: []
+            total: [],
+            result : ' '
             
         },
         methods: {
@@ -22,21 +23,30 @@
                 this.currentNumber = this.currentNumber + "" + parseFloat(event.target.innerHTML);
             },
             resetIt: function(event) {
-            this.currentNumber = ' '
-            this.lastNumber = ''
-            this.total = []
+            this.currentNumber = ''
+            this.total = ''
+            this.result = ''
+            
             },
             sum: function(event) {
-                this.lastNumber= parseFloat(this.currentNumber);
+                this.currentNumber += ' + '
+               /* this.lastNumber= parseFloat(this.currentNumber);
                 this.currentNumber = ' '
-                
+                this.total = this.lastNumber + this.currentNumber
+                */
             },
             minus: function(event) {
-                this.lastNumber= parseFloat(this.currentNumber);
-                this.currentNumber = ' '
+                this.currentNumber += ' - '
+              },
+            multiply: function(event) {
+                this.currentNumber += ' * '
+            },
+            devide: function(event) {
+                this.currentNumber += ' / '
             },
             equal: function(event) {
-                this.total = parseFloat(this.lastNumber) + parseFloat(this.currentNumber) 
+                this.result = eval(this.currentNumber)
+                //this.result = eval(this.total)
             }
         }
     })//vue
@@ -58,16 +68,17 @@
    <div class="container">
     <div id="start">
         <!--<input v-model="numbersDisplay" id="numbers" type="text" placeholder="0">-->
-        <input placeholder=0 class="screen" v-model="currentNumber">
+        <input type="text" placeholder=0 class="screen" v-model="currentNumber">
         </input>
-       <input placeholder="lastnumber" class="list" v-model="lastNumber"></input>
+        <input placeholder="lastnumber" class="list" v-model="lastNumber"></input>
         <input placeholder="total" class="list1" v-model="total"></input>
+        <input placeholder="result" class="list2" v-model="result"></input>
             <table>
                 <tr>
                     <td><button value="C" @click="resetIt">C</button></td>
                     <td><button v-on:click="showNumber">0</button></td>
                     <td><button v-on:click="equal">=</button></td>
-                    <td><button v-on:click="sum()">+</button></td>
+                    <td><button v-on:click="sum">+</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">1</button></td>
@@ -79,13 +90,13 @@
                     <td><button v-on:click="showNumber">4</button></td>
                     <td><button v-on:click="showNumber">5</button></td>
                     <td><button v-on:click="showNumber">6</button></td>
-                    <!--<td><button v-on:click="times">*</button></td>-->
+                    <td><button v-on:click="multiply">*</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">7</button></td>
                     <td><button v-on:click="showNumber">8</button></td>
                     <td><button v-on:click="showNumber">9</button></td>
-                    <!--<td><button v-on:click="devide">/</button></td>-->
+                    <td><button v-on:click="devide">/</button></td>
                 </tr>
         </table>
        
