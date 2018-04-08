@@ -1,11 +1,11 @@
 body {
-   background-color: green;
+   background-color: paleturquoise;
 }
 
 
 .container {
     background-color: gray;
-    width: 300px;
+    width: 260px;
     height: 460px;
     margin-left: 400px;
     margin-top: 100px;
@@ -17,15 +17,51 @@ body {
 .screen {
     background-color: black;
     color: white;
-    width: 200px;
+    width: 256px;
     height: 40px;
     text-align: right;
     border-radius: 3px;
     border-color: white;
+    font-size: large;
 }
 
 td > button {
     background-color: white;
     width: 60px;
     height: 60px;
+    font-size: large;
+}
+
+.list {
+    width: 256px;
+    font-size: large;
+}
+
+#total {
+    color: skyblue;
+}
+#result {
+    color: green;
+    font-size: large;
+    width: 256px;
+}
+
+.reset {
+    background-color: mediumpurple;
+    font-size: large;
+}
+
+.eq {
+    background-color: dodgerblue;
+    font-size: large;
+}
+
+.nums {
+    background-color: greenyellow;
+    font-size: large;
+}
+
+.oprtrs {
+    background-color: orange;
+    font-size: large;
 }
