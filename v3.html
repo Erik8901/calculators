@@ -12,43 +12,137 @@
     let vmCount = new Vue ({
         el: "#start",
         data: {
-            currentNumber: ' ',
+            outPut: '',
+            currentNumber: '',
             lastNumber: [],
             total: [],
-            result : ' '
-            
-        },
+            result : [],
+            oppy: ''
+            },
         methods: {
-            showNumber: function(event) {
-                this.currentNumber = this.currentNumber + "" + parseFloat(event.target.innerHTML);
+            showNumber: function(event3) {
+                this.currentNumber = this.currentNumber + "" + parseFloat(event3.target.innerHTML);
+               // this.total.slice((-1)[0])
             },
             resetIt: function(event) {
+            this.outPut = ''
             this.currentNumber = ''
-            this.total = ''
-            this.result = ''
-            
+            this.lastNumber = []
+            this.total = []
+            this.result = []
             },
-            sum: function(event) {
-                this.currentNumber += ' + '
-               /* this.lastNumber= parseFloat(this.currentNumber);
-                this.currentNumber = ' '
-                this.total = this.lastNumber + this.currentNumber
-                */
-            },
-            minus: function(event) {
-                this.currentNumber += ' - '
-              },
-            multiply: function(event) {
-                this.currentNumber += ' * '
-            },
-            devide: function(event) {
-                this.currentNumber += ' / '
-            },
-            equal: function(event) {
-                this.currentNumber = eval(this.currentNumber)
-                //this.result = eval(this.total)
+            opp: function(eventCount) {
+                this.lastNumber.push(this.currentNumber)
+                this.currentNumber = ''
+                this.oppy = eventCount.target.innerHTML
+                if ( this.oppy == "+") {
+                    this.oppy = eventCount.target.innerHTML
+                    let add = (num1, num2) => +num1 + +num2
+                    this.total.push(this.lastNumber.reduce(add))
+                    this.result = this.total.shift()
+                    //this.outPut = this.result
+                    this.oppy = eventCount.target.innerHTML
+                } else if ( this.oppy == "-") {
+                    this.oppy = eventCount.target.innerHTML
+                    let add = (num1, num2) => +num1 + +num2
+                    this.total.push(this.lastNumber.reduce(add))
+                    this.result = this.total.shift()
+                    //this.outPut = this.result
+                    this.oppy = eventCount.target.innerHTML
+                } else if ( this.oppy == "*") {
+                    this.oppy = eventCount.target.innerHTML
+                    let add = (num1, num2) => +num1 + +num2
+                    this.total.push(this.lastNumber.reduce(add))
+                    this.result = this.total.shift()
+                    //this.outPut = this.result
+                    this.oppy = eventCount.target.innerHTML
+                } else if ( this.oppy == "/") {
+                    this.oppy = eventCount.target.innerHTML
+                    let add = (num1, num2) => +num1 + +num2
+                    this.total.push(this.lastNumber.reduce(add))
+                    this.result = this.total.shift()
+                    //this.outPut = this.result
+                    this.oppy = eventCount.target.innerHTML
+                    
+                } else if ( this.oppy == "=") {
+                    console.log("hej")
+                
+                
+                }
+                
+                
+                
+               
+                
+                
+                    
+                }
             }
-        }
+            
+//            sum: function(eventAdd) {
+//                this.opp = eventAdd.target.innerHTML
+//                console.log(eventAdd)
+//                this.lastNumber.push(this.currentNumber)
+//                this.currentNumber = []
+//                let add = (num1, num2) => +num1 + +num2
+//                 if ( this.lastNumber ) {
+//                    this.total.push(this.lastNumber.reduce(add))
+//                     this.result = this.total.shift()
+//                     this.outPut = this.result
+//                    }
+//                    
+//                 },
+//            minus: function(eventMinus) {
+//                console.log(this.result)
+//                this.opp = eventMinus.target.innerHTML
+//                
+//                if ( this.opp == "+") {
+//                    
+//                    let add = (num1, num2) => +num1 + +num2
+//                    this.total.push(this.lastNumber.reduce(add))
+//                    this.result = this.total.shift()
+//                    this.outPut = this.result
+//                    this.opp = eventMinus.target.innerHTML
+//                } 
+//    
+//                
+////                this.lastNumber.push(this.currentNumber)
+////                this.currentNumber = []
+////                
+////                let add = (num1, num2) => +num1 - +num2
+////                 if ( this.lastNumber ) {
+////                    this.total.push(this.lastNumber.reduce(add))
+////                     this.result = this.total.shift()
+////                    }  
+//                    //this.result = +this.result - +this.currentNumber
+//                },
+//            multiply: function(event) {
+//                this.lastNumber.push(this.currentNumber)
+//                this.currentNumber = []
+//                let add = (num1, num2) => +num1 * +num2
+//                 if ( this.lastNumber ) {
+//                    this.total.push(this.lastNumber.reduce(add))
+//                     this.result = this.total.shift()
+//                    }  
+//                    //this.result = +this.result - +this.currentNumber
+//            },
+//            devide: function(event) {
+//                this.lastNumber.push(this.currentNumber)
+//                this.currentNumber = []
+//                let add = (num1, num2) => +num1 / +num2
+//                 if ( this.lastNumber ) {
+//                    this.total.push(this.lastNumber.reduce(add))
+//                     this.result = this.total.shift()
+//                    }  
+//                    //this.result = +this.result - +this.currentNumber
+//            },
+//            equal: function(event) {
+//                //this.outPut = this.result
+//                //this.total = +this.lastNumber + +this.currentNumber
+                
+                
+            //}
+        //}
     })//vue
       
 }); //load
@@ -68,35 +162,36 @@
    <div class="container">
     <div id="start">
         <!--<input v-model="numbersDisplay" id="numbers" type="text" placeholder="0">-->
-        <input type="text" placeholder=0 class="screen" v-model="currentNumber">
+        <input placeholder="0" class="screen" v-model="outPut"></input>
+        <input placeholder="currentNumber" class="list" v-model="currentNumber">
         </input>
         <input placeholder="lastnumber" class="list" v-model="lastNumber"></input>
-        <input placeholder="total" class="list1" v-model="total"></input>
-        <input placeholder="result" class="list2" v-model="result"></input>
+        <input placeholder="total" class="list" v-model="total"></input>
+        <input placeholder="result" class="list" v-model="result"></input>
             <table>
                 <tr>
                     <td><button value="C" @click="resetIt">C</button></td>
                     <td><button v-on:click="showNumber">0</button></td>
-                    <td><button v-on:click="equal">=</button></td>
-                    <td><button v-on:click="sum">+</button></td>
+                    <td><button v-on:click="opp">=</button></td>
+                    <td><button v-on:click="opp">+</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">1</button></td>
                     <td><button v-on:click="showNumber">2</button></td>
                     <td><button v-on:click="showNumber">3</button></td>
-                    <td><button v-on:click="minus">-</button></td>
+                    <td><button v-on:click="opp">-</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">4</button></td>
                     <td><button v-on:click="showNumber">5</button></td>
                     <td><button v-on:click="showNumber">6</button></td>
-                    <td><button v-on:click="multiply">*</button></td>
+                    <td><button v-on:click="opp">*</button></td>
                 </tr>
                 <tr>
                     <td><button v-on:click="showNumber">7</button></td>
                     <td><button v-on:click="showNumber">8</button></td>
                     <td><button v-on:click="showNumber">9</button></td>
-                    <td><button v-on:click="devide">/</button></td>
+                    <td><button v-on:click="opp">/</button></td>
                 </tr>
         </table>
        
@@ -113,23 +208,5 @@
         
      
 </body>
-   
-      
-        
-   
-        
-        
-      
-        
-    </div>
-    
-    
-    
-    
-    
-    
-    
-
-    
-    </script>
+</script>
 </html>

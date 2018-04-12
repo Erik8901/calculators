@@ -114,3 +114,141 @@
     
     </script>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 4 Vue V3</title>
+    <link rel="stylesheet" type="text/css" href="./styles/styles3.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+      
+    window.addEventListener("load", () => {
+        
+    let vmCount = new Vue ({
+        el: "#start",
+        data: {
+            currentNumber: ' ',
+            lastNumber: [],
+            total: [],
+            result : ' '
+            
+        },
+        methods: {
+            showNumber: function(event) {
+                this.currentNumber = this.currentNumber + "" + parseFloat(event.target.innerHTML);
+            },
+            resetIt: function(event) {
+            this.currentNumber = ''
+            this.total = ''
+            this.result = ''
+            
+            },
+            sum: function(event) {
+                this.currentNumber += ' + '
+               /* this.lastNumber= parseFloat(this.currentNumber);
+                this.currentNumber = ' '
+                this.total = this.lastNumber + this.currentNumber
+                */
+            },
+            minus: function(event) {
+                this.currentNumber += ' - '
+              },
+            multiply: function(event) {
+                this.currentNumber += ' * '
+            },
+            devide: function(event) {
+                this.currentNumber += ' / '
+            },
+            equal: function(event) {
+                this.currentNumber = eval(this.currentNumber)
+                this.result = eval(this.currentNumber)
+                let all = this.result
+                this.total.push(all)
+            }
+        }
+    })//vue
+      
+}); //load
+        
+      
+    
+          
+    
+    
+    
+    
+</script>
+</head>
+<body>
+    
+    
+   <div class="container">
+    <div id="start">
+        <!--<input v-model="numbersDisplay" id="numbers" type="text" placeholder="0">-->
+        <input type="text" placeholder=0 class="screen" v-model="currentNumber">
+        </input>
+        <input placeholder="lastnumber" class="list" v-model="lastNumber"></input>
+        <input placeholder="total" id="total" class="list" v-model="total"></input>
+        <input placeholder="result" id="result" id="result" v-model="result"></input>
+            <table>
+                <tr>
+                    <td><button class="reset" value="C" @click="resetIt">C</button></td>
+                    <td><button class="nums" v-on:click="showNumber">0</button></td>
+                    <td><button class="eq" v-on:click="equal">=</button></td>
+                    <td><button class="oprtrs" v-on:click="sum">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="nums" v-on:click="showNumber">1</button></td>
+                    <td><button class="nums" v-on:click="showNumber">2</button></td>
+                    <td><button class="nums" v-on:click="showNumber">3</button></td>
+                    <td><button class="oprtrs" v-on:click="minus">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="nums" v-on:click="showNumber">4</button></td>
+                    <td><button class="nums" v-on:click="showNumber">5</button></td>
+                    <td><button class="nums" v-on:click="showNumber">6</button></td>
+                    <td><button class="oprtrs" v-on:click="multiply">*</button></td>
+                </tr>
+                <tr>
+                    <td><button class="nums" v-on:click="showNumber">7</button></td>
+                    <td><button class="nums" v-on:click="showNumber">8</button></td>
+                    <td><button class="nums" v-on:click="showNumber">9</button></td>
+                    <td><button class="oprtrs" v-on:click="devide">/</button></td>
+                </tr>
+        </table>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       </div>
+</div>
+        
+     
+</body>
+   
+      
+        
+   
+        
+        
+      
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    
+
+    
+    </script>
+</html>

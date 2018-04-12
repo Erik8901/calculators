@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab 4 Vue V3</title>
+    <link rel="stylesheet" type="text/css" href="./styles/styles3.css">
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <script>
+      
+    window.addEventListener("load", () => {
+        
+    let vmCount = new Vue ({
+        el: "#start",
+        data: {
+            outPut: '',
+            currentNumber: '',
+            lastNumber: [],
+            total: [],
+            result : '',
+            opp: ''
+            },
+        methods: {
+            showNumber: function(event3) {
+                this.currentNumber = this.currentNumber + "" + parseFloat(event3.target.innerHTML);
+               // this.total.slice((-1)[0])
+            },
+            resetIt: function(event) {
+            this.outPut = ''
+            this.currentNumber = ''
+            this.lastNumber = []
+            this.total = []
+            this.result = ''
+            },
+            sum: function(eventAdd) {
+                this.opp = eventAdd.target.innerHTML
+                
+                this.lastNumber.push(this.currentNumber)
+                this.currentNumber = []
+                let add = (num1, num2) => +num1 + +num2
+                 if ( this.lastNumber ) {
+                    this.total.push(this.lastNumber.reduce(add))
+                     this.result = this.total.shift()
+                     this.outPut = this.result
+                    }
+                    
+                 },
+            minus: function(eventMinus) {
+                this.opp = eventMinus.target.innerHTML
+                if ( this.opp == "+") {
+                    this.outPut = +this.lastNumber + +this.currentNumber
+                    this.result = this.outPut
+                    this.opp = eventMinus.target.innerHTML
+                } 
+    
+                
+                this.lastNumber.push(this.currentNumber)
+                this.currentNumber = []
+                
+                let add = (num1, num2) => +num1 - +num2
+                 if ( this.lastNumber ) {
+                    this.total.push(this.lastNumber.reduce(add))
+                     this.result = this.total.shift()
+                    }  
+                    //this.result = +this.result - +this.currentNumber
+                },
+            multiply: function(event) {
+                this.lastNumber.push(this.currentNumber)
+                this.currentNumber = []
+                let add = (num1, num2) => +num1 * +num2
+                 if ( this.lastNumber ) {
+                    this.total.push(this.lastNumber.reduce(add))
+                     this.result = this.total.shift()
+                    }  
+                    //this.result = +this.result - +this.currentNumber
+            },
+            devide: function(event) {
+                this.lastNumber.push(this.currentNumber)
+                this.currentNumber = []
+                let add = (num1, num2) => +num1 / +num2
+                 if ( this.lastNumber ) {
+                    this.total.push(this.lastNumber.reduce(add))
+                     this.result = this.total.shift()
+                    }  
+                    //this.result = +this.result - +this.currentNumber
+            },
+            equal: function(event) {
+                //this.outPut = this.result
+                //this.total = +this.lastNumber + +this.currentNumber
+                
+            }
+        }
+    })//vue
+      
+}); //load
+        
+      
+    
+          
+    
+    
+    
+    
+</script>
+</head>
+<body>
+    
+    
+   <div class="container">
+    <div id="start">
+        <!--<input v-model="numbersDisplay" id="numbers" type="text" placeholder="0">-->
+        <input placeholder="0" class="screen" v-model="outPut"></input>
+        <input placeholder="currentNumber" class="list" v-model="currentNumber">
+        </input>
+        <input placeholder="lastnumber" class="list" v-model="lastNumber"></input>
+        <input placeholder="total" class="list" v-model="total"></input>
+        <input placeholder="result" class="list" v-model="result"></input>
+            <table>
+                <tr>
+                    <td><button value="C" @click="resetIt">C</button></td>
+                    <td><button v-on:click="showNumber">0</button></td>
+                    <td><button v-on:click="equal">=</button></td>
+                    <td><button v-on:click="sum">+</button></td>
+                </tr>
+                <tr>
+                    <td><button v-on:click="showNumber">1</button></td>
+                    <td><button v-on:click="showNumber">2</button></td>
+                    <td><button v-on:click="showNumber">3</button></td>
+                    <td><button v-on:click="minus">-</button></td>
+                </tr>
+                <tr>
+                    <td><button v-on:click="showNumber">4</button></td>
+                    <td><button v-on:click="showNumber">5</button></td>
+                    <td><button v-on:click="showNumber">6</button></td>
+                    <td><button v-on:click="multiply">*</button></td>
+                </tr>
+                <tr>
+                    <td><button v-on:click="showNumber">7</button></td>
+                    <td><button v-on:click="showNumber">8</button></td>
+                    <td><button v-on:click="showNumber">9</button></td>
+                    <td><button v-on:click="devide">/</button></td>
+                </tr>
+        </table>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       </div>
+</div>
+        
+     
+</body>
+</script>
+</html>
