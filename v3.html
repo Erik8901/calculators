@@ -16,13 +16,21 @@
             currentNumber: '',
             lastNumber: [],
             history: [],
+            countArr: [],
             result : [],
             operator: ''
             },
         methods: {
             showNumber: function(event3) {
                 this.currentNumber = this.currentNumber + "" + parseFloat(event3.target.innerHTML);
+                 if (this.countArr.length === 2) {
+                     
+                  this.countArr.push(this.currentNumber)
+                  this.currentNumber = '' 
+                     
+              }
                // this.history.slice((-1)[0])
+                
             },
             resetIt: function(event) {
             this.outPut = ''
@@ -30,58 +38,92 @@
             this.lastNumber = []
             this.history = []
             this.result = []
+            this.countArr = []
             },
             // [1, add, 3]
             opp: function(eventCount) {
-                this.lastNumber.push(this.currentNumber)
-                this.currentNumber = ''
+//                this.countArr.push(this.currentNumber)
+//                this.currentNumber = ''
                 this.operator = eventCount.target.innerHTML
+                
                 if ( this.operator === "+") {
+                    this.countArr.push(this.currentNumber)
+                    this.currentNumber = ''
+                    this.countArr.push("+")
+                   
+            } else if ( this.operator === "-") {
+                    this.countArr.push(this.currentNumber)
+                    this.currentNumber = ''
+                    this.countArr.push("-") 
+            }
+                    
+                    //this.history.push(this.lastNumber.reduce(add))
+                    //this.history.push(add(this.countArr[0], this.currentNumber[0]))        
+                     
                     //this.oppy = eventCount.target.innerHTML
-                    let add = (num1, num2) => +num1 + +num2
-                    this.history.push(add(this.lastNumber[0], this.lastNumber[1]))
-                    this.result = this.history.shift()
-                    //this.outPut = this.result
-                } else if ( this.operator === "-") {
-                    this.operator = eventCount.target.innerHTML
-                    let add = (num1, num2) => +num1 - +num2
-                    this.history.push(this.lastNumber.reduce(add))
-                    this.result = this.history.shift()
-                    //this.outPut = this.result
-                    this.operator = eventCount.target.innerHTML
-                } else if ( this.operator === "*") {
-                    this.operator = eventCount.target.innerHTML
-                    let add = (num1, num2) => +num1 * +num2
-                    this.history.push(this.lastNumber.reduce(add))
-                    this.result = this.history.shift()
-                    //this.outPut = this.result
-                    this.operator = eventCount.target.innerHTML
-                } else if ( this.operator === "/") {
-                    this.operator = eventCount.target.innerHTML
-                    let add = (num1, num2) => +num1 / +num2
-                    this.history.push(this.lastNumber.reduce(add))
-                    this.result = this.history.shift()
-                    //this.outPut = this.result
-                    this.operator = eventCount.target.innerHTML
+//                    let add = (num1, num2) => +num1 + +num2
+//                    //this.history.push(add(this.lastNumber[0], this.lastNumber[1]))
+//                    this.history.push(this.lastNumber.reduce(add))
+//                    this.result = this.history.shift()
+//                    //this.outPut = this.result
+//                } else if ( this.operator === "-") {
+//                    //this.operator = eventCount.target.innerHTML
+//                    let add = (num1, num2) => +num1 - +num2
+//                    this.history.push(this.lastNumber.reduce(add))
+//                    this.result = this.history.shift()
+//                   
+//                } else if ( this.operator === "*") {
+//                    let add = (num1, num2) => +num1 * +num2
+//                    this.history.push(this.lastNumber.reduce(add))
+//                    this.result = this.history.shift()
+//                    
+//                } else if ( this.operator === "/") {
+//                    let add = (num1, num2) => +num1 / +num2
+//                    this.history.push(this.lastNumber.reduce(add))
+//                    this.result = this.history.shift()
+//                    
+//                    
+//                } else if (this.operator === "=") {
+//                    
+//                }
                     
-                } else if ( this.operator === "=") {
-                    console.log("hej")
+                if (this.countArr.length > 2) {
+                    if( this.operator === "+") {
+                        let add = (num1, num2) => +this.countArr[0] + +this.countArr[2]
+                        this.history.push(this.countArr.reduce(add))
+                        let total = this.countArr.reduce(add)
+                        console.log(total)
+                        //this.result.push(this.history.shift())
+                        
+                        if (this.countArr.length >= 5) {
+                            this.countArr = []
+                            console.log(this.countArr)
+                            this.countArr.push(total)
+                        }
+                        if (this.history.length === 1) {
+                            
+                        }
+                        
+                    } else if (this.operator === "-") {
+                        let minus = (num1, num2) => +this.countArr[0] - +this.countArr[2]
+                        this.history.push(this.countArr.reduce(minus))
+                    }
                 }
-                if( newAmazingArray.length > 3) {
-                    let f = newAmazingArray[1];
-                    let calculated = f(newAmazingArray[0], newAmazingArray[2])
-                }
-                
-            
-                
-                
-                
-               
-                
-                
-                    
+            },
+            equal: function(res) {
+                if (this.countArr[1] === "+") {
+                    let add = (num1, num2) => +this.countArr[0] + +this.countArr[2]
+                    this.history.push(this.countArr.reduce(add))
                 }
             }
+        }
+                
+//                if( newAmazingArray.length > 3) {
+//                    let f = newAmazingArray[1];
+//                    let calculated = f(newAmazingArray[0], newAmazingArray[2])
+//                }
+                
+           
             
 //            sum: function(eventAdd) {
 //                this.opp = eventAdd.target.innerHTML
@@ -169,6 +211,7 @@
         <input placeholder="0" class="screen" v-model="outPut"></input>
         <input placeholder="currentNumber" class="list" v-model="currentNumber">
         </input>
+        <input placeholder="countArray" class="list" v-model="countArr"></input>
         <input placeholder="lastnumber" class="list" v-model="lastNumber"></input>
         <input placeholder="history" class="list" v-model="history"></input>
         <input placeholder="result" class="list" v-model="result"></input>
@@ -176,7 +219,7 @@
                 <tr>
                     <td><button value="C" @click="resetIt">C</button></td>
                     <td><button v-on:click="showNumber">0</button></td>
-                    <td><button v-on:click="opp">=</button></td>
+                    <td><button v-on:click="equal">=</button></td>
                     <td><button v-on:click="opp">+</button></td>
                 </tr>
                 <tr>
